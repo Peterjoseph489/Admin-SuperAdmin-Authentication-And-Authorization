@@ -1,5 +1,5 @@
 const express = require('express');
-const {newUser, signIn, userVerify, allUsers} = require('../controllers/controller');
+const {newUser, signIn, userVerify, allUsers, forgotPassword, resetPassword, logOut} = require('../controllers/controller');
 const { isSuperAdminAuthorized, isAdminAuthorized } = require('../controllers/authorization')
 // const {
 //     createRecord,
@@ -14,6 +14,9 @@ const router = express.Router();
 router.post('/signup', newUser)
 router.put('/userverify/:id', userVerify)
 router.post('/login', signIn)
+router.post('/logout', logOut)
+router.post('/forgotPassword', forgotPassword)
+router.post('/resetPassword', resetPassword)
 router.get('/records/:id', isAdminAuthorized, allUsers)
 
 
